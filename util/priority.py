@@ -1,6 +1,6 @@
 """Evalúa el nivel de prioridad de un operador.
-@type first: char
-@param first: El operador a evaluar
+@type operator: char
+@param operator: El operador a evaluar
 @rtype: int
 @returns: El nivel de prioridad del operador recibido
 """
