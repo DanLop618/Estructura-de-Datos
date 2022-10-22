@@ -50,18 +50,18 @@ class Program:
             data = getText( input_txt );
             if ( not data ): return messagebox.showinfo( message = "¡Expresión Inválida!", title = "¡Error!" );
             cola.insertar( data );
-            stack_txt.config( state = "normal" );
-            stack_txt.insert( END, f"{ data }\n" );
-            stack_txt.config( state = "disabled" );
+            queue_txt.config( state = "normal" );
+            queue_txt.insert( END, f"{ data }\n" );
+            queue_txt.config( state = "disabled" );
             update();
 
         # Remover un dato.
         def remover():
             if ( cola.vacio() ): return messagebox.showinfo( message = "¡Cola Vacía!", title = "¡Error!" );
             cola.remover();
-            stack_txt.config( state = "normal" );
-            stack_txt.delete( "1.0", "2.0" );
-            stack_txt.config( state = "disabled" );
+            queue_txt.config( state = "normal" );
+            queue_txt.delete( "1.0", "2.0" );
+            queue_txt.config( state = "disabled" );
             update();
 
         # Buscar un dato.
@@ -75,9 +75,9 @@ class Program:
         def limpiar():
             if ( cola.vacio() ): return messagebox.showinfo( message = "¡Cola Vacía!", title = "¡Error!" );
             while( not cola.vacio() ): cola.remover();
-            stack_txt.config( state = "normal" );
-            stack_txt.delete( "1.0", END );
-            stack_txt.config( state = "disabled" );
+            queue_txt.config( state = "normal" );
+            queue_txt.delete( "1.0", END );
+            queue_txt.config( state = "disabled" );
             update();
 
         # Filtrar los datos.
@@ -95,9 +95,9 @@ class Program:
         input_txt.place( x = 25, y = 50 );
         search_txt = Text( frame, height = 1, width = 20 );
         search_txt.place( x = 25, y = 150 );
-        stack_txt = Text( frame, height = 15, width = 22 );
-        stack_txt.place( x = 215, y = 50 );
-        stack_txt.config( state = "disabled" );
+        queue_txt = Text( frame, height = 15, width = 22 );
+        queue_txt.place( x = 215, y = 50 );
+        queue_txt.config( state = "disabled" );
 
         # Botones.
         Button( frame, text = "Insertar", command = insertar, width = 9 ).place( x = 25, y = 75 );
@@ -105,3 +105,23 @@ class Program:
         Button( frame, text = "Búsqueda", command = buscar, width = 9 ).place( x = 25, y = 175 );
         Button( frame, text = "Filtrar", command = filtrar, width  = 9 ).place( x = 115, y = 175 );
         Button( frame, text = "Vaciar", command = limpiar, width = 9 ).place( x = 25, y = 275 );
+
+# Si el programa se ejecuta de manera individual.
+if __name__ == '__main__':
+
+    # Ventana.
+    window = Tk();
+    window.config( width = 650, height = 325 );
+    window.title( "Menú de prácticas - Estructura de Datos" );
+    window.resizable( False, False );
+
+    # Frame Principal.
+    program_frame = Frame( width = 425, height = 325, bg = "#f0f0f0" );
+    program_frame.place( x = 225, y = 0 );
+
+    # Ejecución del programa.
+    program = Program();
+    program.execute( program_frame );
+
+    # Ciclo de vida de la ventana.
+    window.mainloop();

@@ -77,3 +77,23 @@ class Program:
         # Botones.
         Button( frame, text = "Insertar", command = insertar, width = 9 ).place( x = 25, y = 75 );
         Button( frame, text = "Remover", command = remover, width  = 9 ).place( x = 115, y = 75 );
+
+# Si el programa se ejecuta de manera individual.
+if __name__ == '__main__':
+
+    # Ventana.
+    window = Tk();
+    window.config( width = 650, height = 325 );
+    window.title( "Menú de prácticas - Estructura de Datos" );
+    window.resizable( False, False );
+
+    # Frame Principal.
+    program_frame = Frame( width = 425, height = 325, bg = "#f0f0f0" );
+    program_frame.place( x = 225, y = 0 );
+
+    # Ejecución del programa.
+    program = Program();
+    program.execute( program_frame );
+
+    # Ciclo de vida de la ventana.
+    window.mainloop();
