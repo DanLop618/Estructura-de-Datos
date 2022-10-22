@@ -1,0 +1,71 @@
+from tkinter import messagebox;
+from os import path, system;
+from tkinter import *;
+import sys;
+
+# Estructuras
+sys.path.append( path.abspath( "../" ) );
+from util.safeCast import safeCast;
+import util.Constants as Constants;
+
+# Programa
+class Program:
+
+    # Inicializador del programa.
+    def __init__( self ):
+        self.name = "Invertir Cadena";
+        self.module = Constants.Module_Recursividad;
+
+    # Función de ejecución.
+    def execute( self, frame ):
+
+        # Labels
+        Label( frame, text = "Cadena a Invertir:" ).place( x = 25, y = 25 );
+        Label( frame, text = "Cadena Invertida:" ).place( x = 25, y = 140 );
+
+        # Invierte una cadena.
+        def reverse( expression, index = 0 ):
+            if ( index < len( expression ) ): return reverse( expression, index + 1 ) + expression[ index ];
+            return '';
+
+        # Obtención del texto
+        def getText():
+
+            # Expresión recibida.
+            expression = input_txt.get( "1.0", "end-1c" ).strip();
+
+            # Expresión invertida
+            reversed_txt.config( state = "normal" );
+            reversed_txt.delete( "1.0", END );
+            reversed_txt.insert( "1.0" , reverse( expression ) );
+            reversed_txt.config( state = "disabled" );
+
+        # Cuadros de texto.
+        input_txt = Text( frame, height = 5, width = 35 );
+        input_txt.place( x = 25, y = 50 );
+        reversed_txt = Text( frame, height = 5, width = 45 );
+        reversed_txt.place( x = 25, y = 165 );
+        reversed_txt.config( state = "disabled" );
+
+        # Botón de validación.
+        Button( frame, text = "Invertir", command = getText ).place( x = 315, y = 47.5 );
+
+# Si el programa se ejecuta de manera individual.
+if __name__ == '__main__':
+
+    # Ventana.
+    window = Tk();
+    window.config( width = 650, height = 325 );
+    window.title( "Menú de prácticas - Estructura de Datos" );
+    window.resizable( False, False );
+
+    # Frame Principal.
+    program_frame = Frame( width = 425, height = 325, bg = "#f0f0f0" );
+    program_frame.place( x = 225, y = 0 );
+
+    # Ejecución del programa.
+    program = Program();
+    program.execute( program_frame );
+
+    # Ciclo de vida de la ventana.
+    window.mainloop();
