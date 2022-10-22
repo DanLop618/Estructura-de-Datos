@@ -42,7 +42,7 @@ class Program:
 
         # Obtención del texto
         def getText( textbox ):
-            data = textbox.get("1.0", "end-1c" ).strip();
+            data = textbox.get( "1.0", "end-1c" ).strip();
             return data;
 
         # Inserción de un dato.

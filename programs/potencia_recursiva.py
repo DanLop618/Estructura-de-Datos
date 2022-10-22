@@ -36,7 +36,7 @@ class Program:
         def elevar():
             first  = getText( first_txt );
             second = getText( second_txt );
-            if ( not first or not second ): return messagebox.showinfo( message = "¡Expresión Inválida!", title = "¡Error!" );
+            if ( first == None or second == None ): return messagebox.showinfo( message = "¡Expresión Inválida!", title = "¡Error!" );
             result_txt.config( state = "normal" );
             result_txt.delete( "1.0", END );
             result_txt.insert( "1.0", pow( first, second ) );

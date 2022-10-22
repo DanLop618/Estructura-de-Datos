@@ -45,7 +45,7 @@ class Program:
         # Inserción de un dato.
         def insertar():
             data = safeCast( input_txt.get("1.0", "end-1c" ).strip(), int );
-            if ( not data ): return messagebox.showinfo( message = "¡Expresión Inválida!", title = "¡Error!" );
+            if ( data == None ): return messagebox.showinfo( message = "¡Expresión Inválida!", title = "¡Error!" );
             cola.insertar( data );
             queue_txt.config( state = "normal" );
             queue_txt.insert( END, f"{ data }\n" );
