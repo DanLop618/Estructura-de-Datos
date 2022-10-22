@@ -55,13 +55,13 @@ if __name__ == '__main__':
 
     # Ventana.
     window = Tk();
-    window.config( width = 650, height = 325 );
+    window.config( width = 425, height = 325 );
     window.title( "Menú de prácticas - Estructura de Datos" );
     window.resizable( False, False );
 
     # Frame Principal.
     program_frame = Frame( width = 425, height = 325, bg = "#f0f0f0" );
-    program_frame.place( x = 225, y = 0 );
+    program_frame.place( x = 0, y = 0 );
 
     # Ejecución del programa.
     program = Program();
