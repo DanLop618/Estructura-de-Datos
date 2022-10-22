@@ -37,11 +37,11 @@ class Cola:
         if ( self.__frente == None ): self.__final == None;
         return frente;
 
-    """Verifica si la pila contiene un elemento.
+    """Verifica si la cola contiene un elemento.
     @type elemento: any
     @param elemento: El elemento a buscar
     @rtype: bool
-    @returns: Si la pila contiene el elemento indicado
+    @returns: Si la cola contiene el elemento indicado
     """
     def contiene( self, elemento ):
         aux = Cola();
@@ -52,11 +52,11 @@ class Cola:
         while ( not aux.vacio() ): self.insertar( aux.remover() );
         return found;
 
-    """Elimina todos los elementos específicos de la pila que no cumplan con la condicion y devuelve la pila resultante.
+    """Elimina todos los elementos específicos de la cola que no cumplan con la condicion y devuelve la cola resultante.
     @type filtro: lambda
     @param filtro: El filtro que los elementos deben cumplir para no ser filtrados
-    @rtype: Pila
-    @returns: La pila resultante después del filtrado
+    @rtype: Cola
+    @returns: La cola resultante después del filtrado
     """
     def filtrar( self, filtro ):
         aux = Cola();
@@ -81,15 +81,15 @@ class Cola:
         while ( not aux.vacio() ): self.insertar( aux.remover() );
         return cad;
 
-    """Devuelve el elemento tope de la pila.
+    """Devuelve el elemento del frente de la cola.
     @rtype: any
-    @returns: El elemento tope de la pila
+    @returns: El elemento tope de la cola
     """
     def frente( self ): return self.__frente._dato if ( self.__frente != None ) else None;
 
-    """Verifica si la pila se encuentra vacía.
+    """Verifica si la cola se encuentra vacía.
     @rtype: bool
-    @returns: Si la pila está vacía o no
+    @returns: Si la cola está vacía o no
     """
     def vacio( self ): return self.__frente == None;
 
