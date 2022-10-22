@@ -4,7 +4,7 @@ from tkinter import *;
 import sys;
 
 # Estructuras
-sys.path.append( path.abspath( "./" ) );
+sys.path.append( path.abspath( "../" ) );
 import util.Constants as Constants;
 from structures.Cola import Cola;
 

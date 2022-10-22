@@ -6,7 +6,7 @@ import sys;
 import re;
 
 # Estructuras
-sys.path.append( path.abspath( "./" ) );
+sys.path.append( path.abspath( "../" ) );
 from util.reverseExpression import reverseExpression;
 from util.priority import priority;
 from util.safeCast import safeCast;

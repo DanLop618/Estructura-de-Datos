@@ -3,7 +3,7 @@ import sys;
 import re;
 
 # Importamos la estrucutra de Pilas.
-sys.path.append( path.abspath( "./" ) );
+sys.path.append( path.abspath( "../" ) );
 from structures.Pila import Pila;
 
 """Convierte una expresión a sí misma leída en reversa, respetando los dígitos y variables.

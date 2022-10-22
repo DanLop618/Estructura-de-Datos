@@ -2,7 +2,7 @@ from os import path, system;
 import sys;
 
 # Estructuras
-sys.path.append( path.abspath( "./" ) );
+sys.path.append( path.abspath( "../" ) );
 from util.safeCast import safeCast;
 from structures.Pila import Pila;
 
