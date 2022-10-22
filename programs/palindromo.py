@@ -1,0 +1,64 @@
+from tkinter import messagebox;
+from os import path, system;
+from tkinter import *;
+import sys;
+
+# Estructuras
+sys.path.append( path.abspath( "./" ) );
+from util.safeCast import safeCast;
+import util.Constants as Constants;
+from structures.Pila import Pila;
+
+# Programa
+class Program:
+
+    # Inicializador del programa.
+    def __init__( self ):
+        self.name = "Palíndromos";
+        self.module = Constants.Module_Pilas;
+
+    # Función de ejecución.
+    def execute( self, frame ):
+
+        # Labels
+        Label( frame, bg = "#f0f0f0", text = "Expresión a validar:" ).place( x = 25, y = 25 );
+
+        # Validación.
+        def validate( expression ):
+
+            # Pilas de almacenamiento.
+            pila_1  = Pila();
+            pila_2  = Pila();
+            pila_3  = Pila();
+
+            # Añadimos las letras a las pilas correspondientes.
+            for letter in expression:
+                if ( letter == ' ' ): continue;
+                pila_1.insertar( letter );
+                pila_2.insertar( letter );
+
+            # Movemos los elementos de la pila 2 a la 3.
+            while ( not pila_2.vacio() ):
+                pila_3.insertar( pila_2.remover() );
+
+            # Verificamos los elementos de la pila.
+            while( not pila_1.vacio() ):
+                if ( pila_1.remover() != pila_3.remover() ): return False;
+
+            # Retornamos verdadero.
+            return True;
+
+        # Obtención del texto.
+        def getText():
+            expression = input_txt.get("1.0", "end-1c" ).strip();
+            if ( not expression ): return messagebox.showinfo( message = "¡Ingresa una expresión válida!", title = "Error" );
+            message = "¡La expresión es palíndroma!";
+            if ( not validate( expression ) ): message = "¡La expresión NO es palíndroma!";
+            messagebox.showinfo( message = message, title = "Validación" );
+
+        # Input de texto.
+        input_txt = Text( frame, height = 1, width = 20 );
+        input_txt.place( x = 25, y = 50 );
+
+        # Botón de validación.
+        Button( frame, text = "Validar", command = getText ).place( x = 25, y = 100 );

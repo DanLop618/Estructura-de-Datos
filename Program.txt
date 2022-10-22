@@ -1,0 +1,30 @@
+from tkinter import messagebox;
+from os import path, system;
+from tkinter import *;
+import sys;
+
+# Estructuras
+sys.path.append( path.abspath( "./" ) );
+from util.safeCast import safeCast;
+import util.Constants as Constants;
+
+# Programa
+class Program:
+
+    # Inicializador del programa.
+    def __init__( self ):
+        self.name = "Some Text";
+        self.module = Constants.Module_Pilas;
+
+    # Función de ejecución.
+    def execute( self, frame ):
+
+        # Labels
+        Label( frame, bg = "#f0f0f0", text = "Some Text" ).place( x = 25, y = 25 );
+
+        # Obtención del texto
+        def getText():
+            # TODO here
+
+        # Botón de validación.
+        Button( frame, text = "Some Text", command = getText ).place( x = 25, y = 75 );
