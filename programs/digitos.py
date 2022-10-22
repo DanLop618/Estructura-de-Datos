@@ -31,14 +31,13 @@ class Program:
 
         # Obtención y validación de texto.
         def getText():
-            number = safeCast( number_txt.get("1.0", "end-1c" ).strip(), int );
+            number = safeCast( number_txt.get( "1.0", "end-1c" ).strip(), int );
             if ( not number ): return messagebox.showinfo( message = "¡Ingresa un entero válido!", title = "Error" );
             if ( number < 0 ): number *= -1;
             result_txt.config( state = "normal" );
             result_txt.delete( "1.0", END );
             result_txt.insert( "1.0" , digitCount( number ) );
             result_txt.config( state = "disabled" );
-
 
         # Cuadros de texto.
         number_txt = Text( frame, height = 1, width = 20 );
