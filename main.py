@@ -49,6 +49,7 @@ def runProgram():
 window = Tk();
 window.config( width = 650, height = 325 );
 window.title( "Menú de prácticas - Estructura de Datos" );
+window.iconphoto( False, PhotoImage( file = "logo.png" ) );
 window.resizable( False, False );
 
 # Frame Principal.
