@@ -1,4 +1,5 @@
 from importlib.machinery import SourceFileLoader;
+from structures.Tooltip import Tooltip;
 from util.safeCast import safeCast;
 from os import path, system, walk;
 from tkinter import messagebox;
@@ -62,6 +63,14 @@ program_frame.place( x = 225, y = 0 );
 Label( main_frame, bg = "#ffffff", text = "Este menú le permitirá ejecutar\ncualquier programa práctico de\nla materia de Estructura de Datos." ).place( x = 25, y = 25 );
 Label( main_frame, bg = "#ffffff", text = "Seleccione un módulo:" ).place( x = 25, y = 110 );
 Label( main_frame, bg = "#ffffff", text = "Seleccione un programa:" ).place( x = 25, y = 180 );
+Label( program_frame, text = "Desarrollado por\nOscar Daniel López Cerino" ).place( relx = 0.5, rely = 0.65, anchor = CENTER );
+
+# Logotipo de la universidad.
+ujat_img = PhotoImage( file = "assets\\ujat.png" );
+ujat_lbl = Label( program_frame, image = ujat_img );
+ujat_lbl.image = ujat_img;
+ujat_lbl.place( relx = 0.5, rely = 0.4, anchor = CENTER );
+
 
 # ComboBoxes
 modules = [ "Pilas", "Recursividad", "Colas" ];
@@ -73,8 +82,17 @@ program_combo = ttk.Combobox( state = "readonly", values = loadValues() );
 program_combo.place( x = 25, y = 205 );
 program_combo.current( 0 );
 
+# Imagen de información.
+info_img = PhotoImage( file = "assets\\info.png" );
+
 # Botón de ejecución.
 Button( main_frame, text = "Ejecutar", command = runProgram, width = 23, height = 3 ).place( x = 25, y = 250 );
+info_btn = Button( program_frame, highlightthickness = 0, bd = 0, image = info_img );
+info_btn.image = info_img; # Referencia para evitar el GarbageCollector
+info_btn.place( x = 5, y = 5 );
+
+# Tooltips
+Tooltip( info_btn, "Desarrollado para la materia de Estructura de Datos en el ciclo escolar 2022-B." );
 
 # Ciclo de vida de la ventana.
 window.mainloop();
