@@ -65,7 +65,7 @@ class Program:
         info_img = PhotoImage( file = path.abspath( ( "./", "../" )[ __name__ == "__main__" ] ) + "\\assets\\info.png" );
 
         # Botón de conversión.
-        Button( text = "Calcular", command = getText, width = 10 ).place( x = 165, y = 155 );
+        Button( frame, text = "Calcular", command = getText, width = 10 ).place( x = 165, y = 155 );
         info_btn = Button( frame, highlightthickness = 0, bd = 0, image = info_img );
         info_btn.image = info_img; # Referencia para evitar el GarbageCollector
         info_btn.place( x = 5, y = 5 );
