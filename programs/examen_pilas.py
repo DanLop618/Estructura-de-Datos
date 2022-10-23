@@ -25,7 +25,7 @@ class Program:
         pila = Pila();
 
         # Labels
-        Label( frame, bg = "#f0f0f0", text = "Baraja:" ).place( x = 25, y = 25 );
+        Label( frame, bg = "#f0f0f0", text = "Baraja:" ).place( x = 185, y = 25 );
 
         # Mezclar la baraja.
         def mezclar():
@@ -77,14 +77,14 @@ class Program:
             baraja_txt.config( state = "disabled" );
 
         # Cuadros de texto.
-        baraja_txt = Text( frame, height = 15, width = 20 );
-        baraja_txt.place( x = 25, y = 50 );
+        baraja_txt = Text( frame, height = 12, width = 20 );
+        baraja_txt.place( x = 125, y = 50 );
         baraja_txt.config( state = "disabled" );
 
         # Botón de validación.
-        Button( frame, text = "Nueva Baraja", command = nueva ).place( x = 225, y = 75 );
-        Button( frame, text = "Cortar Baraja", command = cortar ).place( x = 225, y = 125 );
-        Button( frame, text = "Mezclar Baraja", command = mezclar ).place( x = 225, y = 175 );
+        Button( frame, text = "Nueva", command = nueva, width = 8 ).place( x = 100, y = 260 );
+        Button( frame, text = "Cortar", command = cortar, width = 8 ).place( x = 175, y = 260 );
+        Button( frame, text = "Mezclar", command = mezclar, width = 8 ).place( x = 250, y = 260 );
 
 # Si el programa se ejecuta de manera individual.
 if __name__ == '__main__':

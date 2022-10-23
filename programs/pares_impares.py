@@ -24,10 +24,10 @@ class Program:
         cola = Cola();
 
         # Labels
-        Label( frame, bg = "#f0f0f0", text = "Dato a Ingresar:" ).place( x = 25, y = 25 );
-        Label( frame, bg = "#f0f0f0", text = "Cola Original:" ).place( x = 25, y = 125 );
-        Label( frame, bg = "#f0f0f0", text = "Cola Pares:" ).place( x = 150, y = 125 );
-        Label( frame, bg = "#f0f0f0", text = "Cola Impares:" ).place( x = 275, y = 125 );
+        Label( frame, bg = "#f0f0f0", text = "Dato a Ingresar:" ).place( x = 150, y = 25 );
+        Label( frame, bg = "#f0f0f0", text = "Cola Original:" ).place( x = 35, y = 125 );
+        Label( frame, bg = "#f0f0f0", text = "Cola Pares:" ).place( x = 165, y = 125 );
+        Label( frame, bg = "#f0f0f0", text = "Cola Impares:" ).place( x = 285, y = 125 );
 
         # Actualizar labels.
         def update():
@@ -63,7 +63,7 @@ class Program:
 
         # Input de texto.
         input_txt = Text( frame, height = 1, width = 20 );
-        input_txt.place( x = 25, y = 50 );
+        input_txt.place( x = 125, y = 50 );
         queue_txt = Text( frame, height = 10, width = 12 );
         queue_txt.place( x = 25, y = 150 );
         queue_txt.config( state = "disabled" );
@@ -75,8 +75,8 @@ class Program:
         impares_txt.config( state = "disabled" );
 
         # Botones.
-        Button( frame, text = "Insertar", command = insertar, width = 9 ).place( x = 25, y = 75 );
-        Button( frame, text = "Remover", command = remover, width  = 9 ).place( x = 115, y = 75 );
+        Button( frame, text = "Insertar", command = insertar, width = 9 ).place( x = 125, y = 75 );
+        Button( frame, text = "Remover", command = remover, width  = 9 ).place( x = 215, y = 75 );
 
 # Si el programa se ejecuta de manera individual.
 if __name__ == '__main__':

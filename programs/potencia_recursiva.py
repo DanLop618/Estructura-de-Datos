@@ -20,8 +20,9 @@ class Program:
     def execute( self, frame ):
 
         # Labels
-        Label( frame, bg = "#f0f0f0", text = "Base y Exponente:" ).place( x = 25, y = 25 );
-        Label( frame, bg = "#f0f0f0", text = "Resultado:" ).place( x = 25, y = 125 );
+        Label( frame, bg = "#f0f0f0", text = "Base:" ).place( x = 145, y = 75 );
+        Label( frame, bg = "#f0f0f0", text = "Exponente:" ).place( x = 220, y = 75 );
+        Label( frame, bg = "#f0f0f0", text = "Resultado:" ).place( x = 175, y = 175 );
 
         # Potenciación.
         def pow( base, exp ):
@@ -43,16 +44,16 @@ class Program:
             result_txt.config( state = "disabled" );
 
         # Cuadros de texto.
-        first_txt = Text( frame, height = 1, width = 8 );
-        first_txt.place( x = 25, y = 50 );
-        second_txt = Text( frame, height = 1, width = 8 );
-        second_txt.place( x = 100, y = 50 );
+        first_txt = Text( frame, height = 1, width = 9 );
+        first_txt.place( x = 125, y = 100 );
+        second_txt = Text( frame, height = 1, width = 9 );
+        second_txt.place( x = 215, y = 100 );
         result_txt = Text( frame, height = 1, width = 20 );
-        result_txt.place( x = 25, y = 150 );
+        result_txt.place( x = 125, y = 200 );
         result_txt.config( state = "disabled" );
 
         # Botón de validación.
-        Button( frame, text = "Some Text", command = elevar ).place( x = 25, y = 75 );
+        Button( frame, text = "Elevar", command = elevar, width = 10 ).place( x = 165, y = 125 );
 
 # Si el programa se ejecuta de manera individual.
 if __name__ == '__main__':

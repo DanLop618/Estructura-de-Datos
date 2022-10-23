@@ -25,8 +25,8 @@ class Program:
         aux  = Pila();
 
         # Labels
-        Label( frame, bg = "#f0f0f0", text = "Dato a Ingresar:" ).place( x = 25, y = 25 );
-        Label( frame, bg = "#f0f0f0", text = "Pila Ordenada:" ).place( x = 200, y = 25 );
+        Label( frame, bg = "#f0f0f0", text = "Dato a Ingresar:" ).place( x = 165, y = 25 );
+        Label( frame, bg = "#f0f0f0", text = "Pila Ordenada:" ).place( x = 165, y = 110 );
 
         # Insertar dato.
         def insertar():
@@ -53,14 +53,14 @@ class Program:
 
         # Cuadros de texto.
         input_txt = Text( frame, height = 1, width = 20 );
-        input_txt.place( x = 25, y = 50 );
-        stack_txt = Text( frame, height = 15, width = 20 );
-        stack_txt.place( x = 200, y = 50 );
+        input_txt.place( x = 125, y = 50 );
+        stack_txt = Text( frame, height = 10, width = 20 );
+        stack_txt.place( x = 125, y = 135 );
         stack_txt.config( state = "disabled" );
 
         # Botón de validación.
-        Button( frame, text = "Insertar", command = insertar ).place( x = 25, y = 75 );
-        Button( frame, text = "Limpiar", command = limpiar ).place( x = 85, y = 75 );
+        Button( frame, text = "Insertar", command = insertar, width = 8 ).place( x = 125, y = 75 );
+        Button( frame, text = "Limpiar", command = limpiar, width = 8 ).place( x = 225, y = 75 );
 
 # Si el programa se ejecuta de manera individual.
 if __name__ == '__main__':

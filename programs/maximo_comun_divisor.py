@@ -20,9 +20,9 @@ class Program:
     def execute( self, frame ):
 
         # Labels.
-        Label( frame, text = "Primer Número:" ).place( x = 25, y = 25 );
-        Label( frame, text = "Sugundo Número:" ).place( x = 25, y = 75 );
-        Label( frame, text = "Máximo Común Divisor:" ).place( x = 25, y = 150 );
+        Label( frame, text = "Primer Número:" ).place( x = 155, y = 55 );
+        Label( frame, text = "Sugundo Número:" ).place( x = 155, y = 105 );
+        Label( frame, text = "Máximo Común Divisor:" ).place( x = 140, y = 195 );
 
         # Calcular el máximo común divisor.
         def comun_divisor( num1, num2 ):
@@ -53,15 +53,15 @@ class Program:
 
         # Cuadros de texto.
         first_txt = Text( frame, height = 1, width = 20 );
-        first_txt.place( x = 25, y = 50 );
+        first_txt.place( x = 125, y = 80 );
         second_txt = Text( frame, height = 1, width = 20 );
-        second_txt.place( x = 25, y = 100 );
+        second_txt.place( x = 125, y = 130 );
         result_txt = Text( frame, height = 1, width = 20 );
-        result_txt.place( x = 25, y = 175 );
+        result_txt.place( x = 125, y = 220 );
         result_txt.config( state = "disabled" );
 
         # Botón de conversión.
-        Button( text = "Calcular", command = getText ).place( x = 285, y = 47.5 );
+        Button( text = "Calcular", command = getText, width = 10 ).place( x = 165, y = 155 );
 
 # Si el programa se ejecuta de manera individual.
 if __name__ == '__main__':

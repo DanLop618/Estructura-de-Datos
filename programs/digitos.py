@@ -20,8 +20,8 @@ class Program:
     def execute( self, frame ):
 
         # Labels
-        Label( frame, bg = "#f0f0f0", text = "Ingrese un número entero:" ).place( x = 25, y = 25 );
-        Label( frame, bg = "#f0f0f0", text = "Cantidad de dígitos:" ).place( x = 25, y = 75 );
+        Label( frame, bg = "#f0f0f0", text = "Ingrese un número entero:" ).place( x = 130, y = 75 );
+        Label( frame, bg = "#f0f0f0", text = "Cantidad de dígitos:" ).place( x = 150, y = 150 );
 
         # Validación de digitos recursiva.
         def digitCount( number ):
@@ -41,13 +41,13 @@ class Program:
 
         # Cuadros de texto.
         number_txt = Text( frame, height = 1, width = 20 );
-        number_txt.place( x = 25, y = 50 );
+        number_txt.place( x = 125, y = 100 );
         result_txt = Text( frame, height = 1, width = 20 );
-        result_txt.place( x = 25, y = 100 );
+        result_txt.place( x = 125, y = 175 );
         result_txt.config( state = "disabled" );
 
         # Botón de validación.
-        Button( frame, text = "Calcular", command = getText ).place( x = 25, y = 135 );
+        Button( frame, text = "Calcular", command = getText ).place( x = 175, y = 210 );
 
 # Si el programa se ejecuta de manera individual.
 if __name__ == '__main__':

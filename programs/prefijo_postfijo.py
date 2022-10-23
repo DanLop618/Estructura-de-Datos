@@ -25,9 +25,9 @@ class Program:
     def execute( self, frame ):
 
         # Labels.
-        Label( frame, text = "Expresión a Convertir:" ).place( x = 25, y = 25 );
-        Label( frame, text = "Expresión Postfijo:" ).place( x = 25, y = 100 );
-        Label( frame, text = "Expresión Prefijo:" ).place( x = 25, y = 175 );
+        Label( frame, text = "Expresión a Convertir:" ).place( x = 150, y = 25 );
+        Label( frame, text = "Expresión Postfijo:" ).place( x = 150, y = 120 );
+        Label( frame, text = "Expresión Prefijo:" ).place( x = 150, y = 195 );
 
         # Conversión de una expresión a prefijo.
         def prefix( expression ):
@@ -157,17 +157,17 @@ class Program:
             prefix_txt.config( state = "disabled" );
 
         # Cuadros de texto.
-        input_txt = Text( frame, height = 1, width = 35 );
+        input_txt = Text( frame, height = 1, width = 45 );
         input_txt.place( x = 25, y = 50 );
         postfix_txt = Text( frame, height = 1, width = 45 );
-        postfix_txt.place( x = 25, y = 125 );
+        postfix_txt.place( x = 25, y = 145 );
         postfix_txt.config( state = "disabled" );
         prefix_txt = Text( frame, height = 1, width = 45 );
-        prefix_txt.place( x = 25, y = 200 );
+        prefix_txt.place( x = 25, y = 220 );
         prefix_txt.config( state = "disabled" );
 
         # Botón de conversión.
-        Button( frame, text = "Convertir", command = getText ).place( x = 315, y = 47.5 );
+        Button( frame, text = "Convertir", command = getText, width = 10 ).place( x = 165, y = 75 );
 
 # Si el programa se ejecuta de manera individual.
 if __name__ == '__main__':

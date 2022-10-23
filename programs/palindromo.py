@@ -21,7 +21,7 @@ class Program:
     def execute( self, frame ):
 
         # Labels
-        Label( frame, bg = "#f0f0f0", text = "Expresión a validar:" ).place( x = 25, y = 25 );
+        Label( frame, bg = "#f0f0f0", text = "Expresión a validar:" ).place( x = 157.5, y = 100 );
 
         # Validación.
         def validate( expression ):
@@ -50,7 +50,7 @@ class Program:
 
         # Obtención del texto.
         def getText():
-            expression = input_txt.get("1.0", "end-1c" ).strip();
+            expression = input_txt.get( "1.0", "end-1c" ).strip();
             if ( not expression ): return messagebox.showerror( message = "¡Ingresa una expresión válida!", title = "¡Error!" );
             message = "¡La expresión es palíndroma!";
             if ( not validate( expression ) ): message = "¡La expresión NO es palíndroma!";
@@ -58,10 +58,10 @@ class Program:
 
         # Input de texto.
         input_txt = Text( frame, height = 1, width = 20 );
-        input_txt.place( x = 25, y = 50 );
+        input_txt.place( x = 125, y = 125 );
 
         # Botón de validación.
-        Button( frame, text = "Validar", command = getText ).place( x = 25, y = 100 );
+        Button( frame, text = "Validar", command = getText ).place( x = 187.5, y = 165 );
 
 # Si el programa se ejecuta de manera individual.
 if __name__ == '__main__':

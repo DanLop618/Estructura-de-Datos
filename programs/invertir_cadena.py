@@ -20,8 +20,8 @@ class Program:
     def execute( self, frame ):
 
         # Labels
-        Label( frame, text = "Cadena a Invertir:" ).place( x = 25, y = 25 );
-        Label( frame, text = "Cadena Invertida:" ).place( x = 25, y = 140 );
+        Label( frame, text = "Cadena a Invertir:" ).place( x = 165, y = 25 );
+        Label( frame, text = "Cadena Invertida:" ).place( x = 165, y = 185 );
 
         # Invierte una cadena.
         def reverse( expression, index = 0 ):
@@ -42,13 +42,13 @@ class Program:
 
         # Cuadros de texto.
         input_txt = Text( frame, height = 5, width = 35 );
-        input_txt.place( x = 25, y = 50 );
-        reversed_txt = Text( frame, height = 5, width = 45 );
-        reversed_txt.place( x = 25, y = 165 );
+        input_txt.place( x = 75, y = 50 );
+        reversed_txt = Text( frame, height = 5, width = 35 );
+        reversed_txt.place( x = 75, y = 210 );
         reversed_txt.config( state = "disabled" );
 
         # Botón de validación.
-        Button( frame, text = "Invertir", command = getText ).place( x = 315, y = 47.5 );
+        Button( frame, text = "Invertir", command = getText, width = 10 ).place( x = 175, y = 145 );
 
 # Si el programa se ejecuta de manera individual.
 if __name__ == '__main__':

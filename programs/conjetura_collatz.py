@@ -20,8 +20,8 @@ class Program():
     def execute( self, frame ):
 
         # Labels.
-        Label( frame, bg = "#f0f0f0", text = "Número a Evaluar:" ).place( x = 25, y = 25 );
-        Label( frame, bg = "#f0f0f0", text = "Resultado:" ).place( x = 25, y = 75 );
+        Label( frame, bg = "#f0f0f0", text = "Número a Evaluar:" ).place( x = 150, y = 25 );
+        Label( frame, bg = "#f0f0f0", text = "Resultado:" ).place( x = 175, y = 125 );
 
         # Calcular el máximo común divisor.
         def collatz( num ):
@@ -41,13 +41,13 @@ class Program():
 
         # Cuadros de texto.
         number_txt = Text( frame, height = 1, width = 20 );
-        number_txt.place( x = 25, y = 50 );
-        result_txt = Text( frame, height = 12, width = 20 );
-        result_txt.place( x = 25, y = 100 );
+        number_txt.place( x = 125, y = 50 );
+        result_txt = Text( frame, height = 9, width = 20 );
+        result_txt.place( x = 125, y = 150 );
         result_txt.config( state = "disabled" );
 
         # Botón de conversión.
-        Button( frame, text = "Calcular", command = getText ).place( x = 285, y = 48 );
+        Button( frame, text = "Calcular", command = getText ).place( x = 175, y = 75 );
 
 # Si el programa se ejecuta de manera individual.
 if __name__ == '__main__':

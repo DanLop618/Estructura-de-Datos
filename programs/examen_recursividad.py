@@ -20,8 +20,8 @@ class Program:
     def execute( self, frame ):
 
         # Labels
-        Label( frame, bg = "#f0f0f0", text = "Ingrese un número:" ).place( x = 25, y = 25 );
-        Label( frame, bg = "#f0f0f0", text = "Resultado:" ).place( x = 25, y = 75 );
+        Label( frame, bg = "#f0f0f0", text = "Ingrese un número:" ).place( x = 150, y = 75 );
+        Label( frame, bg = "#f0f0f0", text = "Resultado:" ).place( x = 175, y = 125 );
 
         # Validación de digitos recursiva.
         def digitos( numero ):
@@ -66,14 +66,14 @@ class Program:
 
         # Cuadros de texto.
         number_txt = Text( frame, height = 1, width = 20 );
-        number_txt.place( x = 25, y = 50 );
+        number_txt.place( x = 125, y = 100 );
         result_txt = Text( frame, height = 1, width = 20 );
-        result_txt.place( x = 25, y = 100 );
+        result_txt.place( x = 125, y = 150 );
         result_txt.config( state = "disabled" );
 
         # Botón de validación.
-        Button( frame, text = "Calcular", command = serie ).place( x = 25, y = 125 );
-        Button( frame, text = "Invertir", command = invertir ).place( x = 85, y = 125 );
+        Button( frame, text = "Calcular", command = serie, width = 8 ).place( x = 125, y = 175 );
+        Button( frame, text = "Invertir", command = invertir, width = 8 ).place( x = 225, y = 175 );
 
 # Si el programa se ejecuta de manera individual.
 if __name__ == '__main__':

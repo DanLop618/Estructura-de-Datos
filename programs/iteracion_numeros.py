@@ -25,8 +25,8 @@ class Program:
         auxiliar = Pila();
 
         # Labels
-        Label( frame, bg = "#f0f0f0", text = "Número de Iteraciones:" ).place( x = 25, y = 25 );
-        Label( frame, bg = "#f0f0f0", text = "Pila Ordenada:" ).place( x = 200, y = 25 );
+        Label( frame, bg = "#f0f0f0", text = "Número de Iteraciones:" ).place( x = 140, y = 25 );
+        Label( frame, bg = "#f0f0f0", text = "Pila Ordenada:" ).place( x = 165, y = 110 );
 
         # Añadimos los elementos.
         def iterate():
@@ -48,13 +48,13 @@ class Program:
 
         # Cuadros de texto.
         input_txt = Text( frame, height = 1, width = 20 );
-        input_txt.place( x = 25, y = 50 );
-        stack_txt = Text( frame, height = 15, width = 20 );
-        stack_txt.place( x = 200, y = 50 );
+        input_txt.place( x = 125, y = 50 );
+        stack_txt = Text( frame, height = 10, width = 20 );
+        stack_txt.place( x = 125, y = 135 );
         stack_txt.config( state = "disabled" );
 
         # Botón de validación.
-        Button( frame, text = "Iterar", command = iterate ).place( x = 25, y = 75 );
+        Button( frame, text = "Iterar", command = iterate, width = 10 ).place( x = 165, y = 75 );
 
 # Si el programa se ejecuta de manera individual.
 if __name__ == '__main__':
