@@ -4,6 +4,8 @@ from structures.Nodo import Nodo;
 class Cola:
 
     """Inicializa una nueva Cola Lineal de datos.
+    @type datos: array
+    @param datos: Los datos iniciales de la cola
     @rtype: Cola
     @returns: La nueva cola lineal
     """
