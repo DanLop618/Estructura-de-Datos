@@ -5,6 +5,7 @@ import sys;
 
 # Estructuras
 sys.path.append( path.abspath( "../" ) );
+from structures.Tooltip import Tooltip;
 from util.safeCast import safeCast;
 import util.Constants as Constants;
 from structures.Pila import Pila;
@@ -81,10 +82,19 @@ class Program:
         baraja_txt.place( x = 125, y = 50 );
         baraja_txt.config( state = "disabled" );
 
+        # Imagen de información.
+        info_img = PhotoImage( file = path.abspath( ( "./", "../" )[ __name__ == "__main__" ] ) + "\\assets\\info.png" );
+
         # Botón de validación.
         Button( frame, text = "Nueva", command = nueva, width = 8 ).place( x = 100, y = 260 );
         Button( frame, text = "Cortar", command = cortar, width = 8 ).place( x = 175, y = 260 );
         Button( frame, text = "Mezclar", command = mezclar, width = 8 ).place( x = 250, y = 260 );
+        info_btn = Button( frame, highlightthickness = 0, bd = 0, image = info_img );
+        info_btn.image = info_img; # Referencia para evitar el GarbageCollector
+        info_btn.place( x = 5, y = 5 );
+
+        # Tooltips
+        Tooltip( info_btn, "Éste programa simulará un mazo de 48 cartas que podrá cortarse, mezclarse y reiniciarse." );
 
 # Si el programa se ejecuta de manera individual.
 if __name__ == '__main__':

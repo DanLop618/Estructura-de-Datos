@@ -5,6 +5,7 @@ import sys;
 
 # Estructuras
 sys.path.append( path.abspath( "../" ) );
+from structures.Tooltip import Tooltip;
 import util.Constants as Constants;
 from util.safeCast import safeCast;
 from structures.Cola import Cola;
@@ -74,9 +75,21 @@ class Program:
         impares_txt.place( x = 275, y = 150 );
         impares_txt.config( state = "disabled" );
 
+        # Imagen de información.
+        info_img = PhotoImage( file = path.abspath( ( "./", "../" )[ __name__ == "__main__" ] ) + "\\assets\\info.png" );
+
         # Botones.
         Button( frame, text = "Insertar", command = insertar, width = 9 ).place( x = 125, y = 75 );
         Button( frame, text = "Remover", command = remover, width  = 9 ).place( x = 215, y = 75 );
+        info_btn = Button( frame, highlightthickness = 0, bd = 0, image = info_img );
+        info_btn.image = info_img; # Referencia para evitar el GarbageCollector
+        info_btn.place( x = 5, y = 5 );
+
+        # Tooltips
+        Tooltip( info_btn,
+            "Éste programa le permitirá añadir números enteros a una cola, mientras que dos colas auxiliares " +
+            "almacenarán los números pares e impares respectivamente.\n\nCuando un dato sea removido de la cola " +
+            "original, éste dato será removido de la cola de pares/impares correspondiente." );
 
 # Si el programa se ejecuta de manera individual.
 if __name__ == '__main__':

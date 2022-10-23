@@ -100,6 +100,9 @@ class Program:
         queue_txt.place( x = 215, y = 50 );
         queue_txt.config( state = "disabled" );
 
+        # Imagen de información.
+        info_img = PhotoImage( file = path.abspath( ( "./", "../" )[ __name__ == "__main__" ] ) + "\\assets\\info.png" );
+
         # Botones.
         Button( frame, text = "Insertar", command = insertar, width = 9 ).place( x = 25, y = 75 );
         Button( frame, text = "Remover", command = remover, width  = 9 ).place( x = 115, y = 75 );
@@ -107,8 +110,12 @@ class Program:
         Button( frame, text = "Vaciar", command = limpiar, width = 9 ).place( x = 25, y = 275 );
         filter_btn = Button( frame, text = "Filtrar", command = filtrar, width  = 9 );
         filter_btn.place( x = 115, y = 175 );
+        info_btn = Button( frame, highlightthickness = 0, bd = 0, image = info_img );
+        info_btn.image = info_img; # Referencia para evitar el GarbageCollector
+        info_btn.place( x = 5, y = 5 );
 
         # Tooltips
+        Tooltip( info_btn, "Éste programa le permitirá manipular una cola lineal de datos mediante sus métodos." );
         Tooltip( filter_btn,
             "Convierte la expresión recibida en una función LAMBDA e itera todos los elementos de la cola, filtrando " +
             "los elementos que no cumplan con la condición de la función.\n\nEjemplo:\n\n\tint( el ) > 0\n\nDevuelve " +

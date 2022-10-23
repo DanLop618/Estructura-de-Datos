@@ -5,6 +5,7 @@ import sys;
 
 # Estructuras
 sys.path.append( path.abspath( "../" ) );
+from structures.Tooltip import Tooltip;
 from util.safeCast import safeCast;
 import util.Constants as Constants;
 
@@ -46,8 +47,17 @@ class Program():
         result_txt.place( x = 125, y = 150 );
         result_txt.config( state = "disabled" );
 
-        # Botón de conversión.
+        # Imagen de información.
+        info_img = PhotoImage( file = path.abspath( ( "./", "../" )[ __name__ == "__main__" ] ) + "\\assets\\info.png" );
+
+        # Botones.
         Button( frame, text = "Calcular", command = getText ).place( x = 175, y = 75 );
+        info_btn = Button( frame, highlightthickness = 0, bd = 0, image = info_img );
+        info_btn.image = info_img; # Referencia para evitar el GarbageCollector
+        info_btn.place( x = 5, y = 5 );
+
+        # Tooltips
+        Tooltip( info_btn, "Éste programa tomará un número entero y ejecutará la conjetura de Collatz respectiva." );
 
 # Si el programa se ejecuta de manera individual.
 if __name__ == '__main__':

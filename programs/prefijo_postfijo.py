@@ -8,6 +8,7 @@ import re;
 # Estructuras
 sys.path.append( path.abspath( "../" ) );
 from util.reverseExpression import reverseExpression;
+from structures.Tooltip import Tooltip;
 from util.priority import priority;
 from util.safeCast import safeCast;
 import util.Constants as Constants;
@@ -166,8 +167,17 @@ class Program:
         prefix_txt.place( x = 25, y = 220 );
         prefix_txt.config( state = "disabled" );
 
+        # Imagen de información.
+        info_img = PhotoImage( file = path.abspath( ( "./", "../" )[ __name__ == "__main__" ] ) + "\\assets\\info.png" );
+
         # Botón de conversión.
         Button( frame, text = "Convertir", command = getText, width = 10 ).place( x = 165, y = 75 );
+        info_btn = Button( frame, highlightthickness = 0, bd = 0, image = info_img );
+        info_btn.image = info_img; # Referencia para evitar el GarbageCollector
+        info_btn.place( x = 5, y = 5 );
+
+        # Tooltips
+        Tooltip( info_btn, "Éste programa tomará una expresión infija y la convertirá a expresión PREFIJA y POSTFIJA." );
 
 # Si el programa se ejecuta de manera individual.
 if __name__ == '__main__':

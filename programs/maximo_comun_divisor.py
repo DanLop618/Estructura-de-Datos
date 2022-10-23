@@ -5,6 +5,7 @@ import sys;
 
 # Estructuras
 sys.path.append( path.abspath( "../" ) );
+from structures.Tooltip import Tooltip;
 from util.safeCast import safeCast;
 import util.Constants as Constants;
 
@@ -60,8 +61,17 @@ class Program:
         result_txt.place( x = 125, y = 220 );
         result_txt.config( state = "disabled" );
 
+        # Imagen de información.
+        info_img = PhotoImage( file = path.abspath( ( "./", "../" )[ __name__ == "__main__" ] ) + "\\assets\\info.png" );
+
         # Botón de conversión.
         Button( text = "Calcular", command = getText, width = 10 ).place( x = 165, y = 155 );
+        info_btn = Button( frame, highlightthickness = 0, bd = 0, image = info_img );
+        info_btn.image = info_img; # Referencia para evitar el GarbageCollector
+        info_btn.place( x = 5, y = 5 );
+
+        # Tooltips
+        Tooltip( info_btn, "Éste programa tomará dos números enteros y calculará el máximo común divisor entre ambos." );
 
 # Si el programa se ejecuta de manera individual.
 if __name__ == '__main__':

@@ -5,6 +5,7 @@ import sys;
 
 # Estructuras
 sys.path.append( path.abspath( "../" ) );
+from structures.Tooltip import Tooltip;
 from util.safeCast import safeCast;
 import util.Constants as Constants;
 from structures.Pila import Pila;
@@ -60,8 +61,19 @@ class Program:
         input_txt = Text( frame, height = 1, width = 20 );
         input_txt.place( x = 125, y = 125 );
 
+        # Imagen de información.
+        info_img = PhotoImage( file = path.abspath( ( "./", "../" )[ __name__ == "__main__" ] ) + "\\assets\\info.png" );
+
         # Botón de validación.
         Button( frame, text = "Validar", command = getText ).place( x = 187.5, y = 165 );
+        info_btn = Button( frame, highlightthickness = 0, bd = 0, image = info_img );
+        info_btn.image = info_img; # Referencia para evitar el GarbageCollector
+        info_btn.place( x = 5, y = 5 );
+
+        # Tooltips
+        Tooltip( info_btn,
+            "Éste programa validará si una expresión es palíndroma o no.\n\nUna expresión palíndroma es aquella " +
+            "que es escrita/leída igualmente al derecho y al revés (sin tomar en cuenta los espacios)." );
 
 # Si el programa se ejecuta de manera individual.
 if __name__ == '__main__':

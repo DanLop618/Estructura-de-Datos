@@ -5,6 +5,7 @@ import sys;
 
 # Estructuras
 sys.path.append( path.abspath( "../" ) );
+from structures.Tooltip import Tooltip;
 from util.safeCast import safeCast;
 import util.Constants as Constants;
 from structures.Pila import Pila;
@@ -53,8 +54,20 @@ class Program:
         stack_txt.place( x = 125, y = 135 );
         stack_txt.config( state = "disabled" );
 
+        # Imagen de información.
+        info_img = PhotoImage( file = path.abspath( ( "./", "../" )[ __name__ == "__main__" ] ) + "\\assets\\info.png" );
+
         # Botón de validación.
         Button( frame, text = "Iterar", command = iterate, width = 10 ).place( x = 165, y = 75 );
+        info_btn = Button( frame, highlightthickness = 0, bd = 0, image = info_img );
+        info_btn.image = info_img; # Referencia para evitar el GarbageCollector
+        info_btn.place( x = 5, y = 5 );
+
+        # Tooltips
+        Tooltip( info_btn,
+            "Éste programa tomará un número entero y rellenará la pila de datos con todos los números desde el 0 " +
+            "hasta él mismo, ordenando los números pares por encima del 0 y los impares por debajo.\n\nEjemplo:" +
+            "\n\n\t..., 4, 2, 0, 1, 3, ..." );
 
 # Si el programa se ejecuta de manera individual.
 if __name__ == '__main__':

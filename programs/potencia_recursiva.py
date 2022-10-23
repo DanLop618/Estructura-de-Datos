@@ -5,6 +5,7 @@ import sys;
 
 # Estructuras
 sys.path.append( path.abspath( "../" ) );
+from structures.Tooltip import Tooltip;
 from util.safeCast import safeCast;
 import util.Constants as Constants;
 
@@ -52,8 +53,17 @@ class Program:
         result_txt.place( x = 125, y = 200 );
         result_txt.config( state = "disabled" );
 
+        # Imagen de información.
+        info_img = PhotoImage( file = path.abspath( ( "./", "../" )[ __name__ == "__main__" ] ) + "\\assets\\info.png" );
+
         # Botón de validación.
         Button( frame, text = "Elevar", command = elevar, width = 10 ).place( x = 165, y = 125 );
+        info_btn = Button( frame, highlightthickness = 0, bd = 0, image = info_img );
+        info_btn.image = info_img; # Referencia para evitar el GarbageCollector
+        info_btn.place( x = 5, y = 5 );
+
+        # Tooltips
+        Tooltip( info_btn, "Éste programa tomará dos números y le permitirá elevar el primero a la potencia del segundo." );
 
 # Si el programa se ejecuta de manera individual.
 if __name__ == '__main__':
