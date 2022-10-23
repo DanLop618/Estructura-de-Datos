@@ -120,16 +120,13 @@ if __name__ == '__main__':
     # Ventana.
     window = Tk();
     window.config( width = 425, height = 325 );
-    window.title( "Menú de prácticas - Estructura de Datos" );
     window.resizable( False, False );
-
-    # Frame Principal.
-    program_frame = Frame( width = 425, height = 325, bg = "#f0f0f0" );
-    program_frame.place( x = 0, y = 0 );
+    window.iconphoto( False, PhotoImage( file = path.abspath( "../" ) + "\\logo.png" ) );
 
     # Ejecución del programa.
     program = Program();
-    program.execute( program_frame );
+    window.title( f"{ program.name }" );
+    program.execute( window );
 
     # Ciclo de vida de la ventana.
     window.mainloop();
