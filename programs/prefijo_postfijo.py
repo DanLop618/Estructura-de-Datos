@@ -186,7 +186,7 @@ if __name__ == '__main__':
     window = Tk();
     window.config( width = 425, height = 325 );
     window.resizable( False, False );
-    window.iconphoto( False, PhotoImage( file = path.abspath( "../" ) + "\\logo.png" ) );
+    window.iconphoto( False, PhotoImage( file = path.abspath( "../" ) + "\\assets\\logo.png" ) );
 
     # Ejecución del programa.
     program = Program();
