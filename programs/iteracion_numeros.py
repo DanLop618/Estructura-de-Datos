@@ -31,7 +31,7 @@ class Program:
         # Añadimos los elementos.
         def iterate():
             size = safeCast( input_txt.get( "1.0", "end-1c" ).strip(), int );
-            if ( size == None ): return messagebox.showinfo( message = "¡Expresión Inválida!", title = "¡Error!" );
+            if ( size == None ): return messagebox.showerror( message = "¡Ingrese un entero válido!", title = "¡Error!" );
             for number in range( 0, size + 1 ):
                 if ( not number % 2 ): pila.insertar( number );
                 if ( number % 2 ):

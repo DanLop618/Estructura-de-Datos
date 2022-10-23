@@ -31,7 +31,7 @@ class Program:
         # Insertar dato.
         def insertar():
             data = safeCast( input_txt.get( "1.0", "end-1c" ).strip(), int );
-            if ( data == None ): return messagebox.showinfo( message = "¡Expresión Inválida!", title = "¡Error!" );
+            if ( data == None ): return messagebox.showerror( message = "¡Ingrese un entero válido!", title = "¡Error!" );
             while ( not pila.vacio() and pila.tope() < data ): aux.insertar( pila.remover() );
             pila.insertar( data );
             while ( not aux.vacio() ): pila.insertar( aux.remover() );

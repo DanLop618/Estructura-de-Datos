@@ -41,7 +41,7 @@ def loadValues():
 
 # Ejecutar un programa.
 def runProgram():
-    if ( not program_combo.get() ): return messagebox.showinfo( message = "¡Selecciona un programa!", title = "Error" );
+    if ( not program_combo.get() ): return messagebox.showerror( message = "¡Selecciona un programa!", title = "¡Error!" );
     for widget in program_frame.winfo_children(): widget.destroy();
     programs[ program_combo.get() ].execute( program_frame );
 

@@ -43,7 +43,7 @@ class Program:
         # Comando serie.
         def serie():
             num = safeCast( getText(), int );
-            if ( num == None ): return messagebox.showinfo( message = "¡Ingrese un Entero Válido!", title = "¡Error!" );
+            if ( num == None ): return messagebox.showerror( message = "¡Ingrese un entero válido!", title = "¡Error!" );
             if ( num < 0 ): num *= -1;
             result_txt.config( state = "normal" );
             result_txt.delete( "1.0", END );
@@ -53,7 +53,7 @@ class Program:
         # Comando invertir
         def invertir():
             num = safeCast( getText(), int );
-            if ( num == None ): return messagebox.showinfo( message = "¡Ingrese un Entero Válido!", title = "¡Error!" );
+            if ( num == None ): return messagebox.showerror( message = "¡Ingrese un entero válido!", title = "¡Error!" );
             if ( num < 0 ): num *= -1;
             result_txt.config( state = "normal" );
             result_txt.delete( "1.0", END );

@@ -39,7 +39,7 @@ class Program:
             num2 = safeCast( second_txt.get( "1.0", "end-1c" ).strip(), int );
 
             # Si no son números válidos.
-            if ( num1 == None or num2 == None ): return messagebox.showinfo( message = "¡Expresión Inválida!", title = "Error" );
+            if ( num1 == None or num2 == None ): return messagebox.showerror( message = "¡Ingrese un entero válido!", title = "¡Error!" );
 
             # Si son valores negativos.
             if ( num1 < 0 ): num1 *= -1;

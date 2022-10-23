@@ -48,7 +48,7 @@ class Program:
         # Inserción de un dato.
         def insertar():
             data = getText( input_txt );
-            if ( not data ): return messagebox.showinfo( message = "¡Expresión Inválida!", title = "¡Error!" );
+            if ( not data ): return messagebox.showerror( message = "¡Ingrese un dato!", title = "¡Error!" );
             pila.insertar( data );
             stack_txt.config( state = "normal" );
             stack_txt.insert( "1.0", f"{ data }\n" );
@@ -57,7 +57,7 @@ class Program:
 
         # Remover un dato.
         def remover():
-            if ( pila.vacio() ): return messagebox.showinfo( message = "¡Pila Vacía!", title = "¡Error!" );
+            if ( pila.vacio() ): return messagebox.showerror( message = "¡Pila vacía!", title = "¡Error!" );
             pila.remover();
             stack_txt.config( state = "normal" );
             stack_txt.delete( "1.0", "2.0" );
@@ -67,13 +67,13 @@ class Program:
         # Buscar un dato.
         def buscar():
             data = getText( search_txt );
-            if ( not data ): return messagebox.showinfo( message = "¡Expresión Inválida!", title = "¡Error!" );
-            if ( not pila.contiene( data ) ): return messagebox.showinfo( message = "¡Dato no encontrado!", title = ":(" );
-            messagebox.showinfo( message = "¡Dato encontrado!", title = ":D" );
+            if ( not data ): return messagebox.showerror( message = "¡Ingrese un dato a buscar!", title = "¡Error!" );
+            if ( not pila.contiene( data ) ): return messagebox.showerror( message = "¡Dato no encontrado!", title = "¡Error!" );
+            messagebox.showinfo( message = "¡El dato se encontró con éxito!", title = "¡Éxito!" );
 
         # Limpiar pila.
         def limpiar():
-            if ( pila.vacio() ): return messagebox.showinfo( message = "¡Pila Vacía!", title = "¡Error!" );
+            if ( pila.vacio() ): return messagebox.showerror( message = "¡Pila vacía!", title = "¡Error!" );
             pila.limpiar();
             stack_txt.config( state = "normal" );
             stack_txt.delete( "1.0", END );
@@ -83,12 +83,12 @@ class Program:
         # Filtrar los datos.
         def filtrar():
             filtro = getText( search_txt );
-            if ( not filtro ): return messagebox.showinfo( message = "¡Expresión Lambda Inválida!", title = "¡Error!" );
+            if ( not filtro ): return messagebox.showerror( message = "¡Expresión lambda inválida!", title = "¡Error!" );
             try:
                 filtered = pila.filtrar( lambda el: eval( filtro ) );
                 messagebox.showinfo( message = f"La pila resultante es la siguiente:\n\n{ filtered.imprimir() }\nOcurrencias: { filtered.longitud() }", title = "¡Filtrado!" );
             except ( NameError, SyntaxError ):
-                messagebox.showinfo( message = "¡Expresión Lambda Inválida!", title = "¡Error!" );
+                messagebox.showerror( message = "¡Expresión lambda inválida!", title = "¡Error!" );
 
         # Input de texto.
         input_txt = Text( frame, height = 1, width = 20 );

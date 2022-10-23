@@ -32,7 +32,7 @@ class Program:
         # Obtención y validación de texto.
         def getText():
             number = safeCast( number_txt.get( "1.0", "end-1c" ).strip(), int );
-            if ( number == None ): return messagebox.showinfo( message = "¡Ingresa un entero válido!", title = "Error" );
+            if ( number == None ): return messagebox.showerror( message = "¡Ingresa un entero válido!", title = "¡Error!" );
             if ( number < 0 ): number *= -1;
             result_txt.config( state = "normal" );
             result_txt.delete( "1.0", END );

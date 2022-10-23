@@ -45,7 +45,7 @@ class Program:
         # Inserción de un dato.
         def insertar():
             data = safeCast( input_txt.get("1.0", "end-1c" ).strip(), int );
-            if ( data == None ): return messagebox.showinfo( message = "¡Expresión Inválida!", title = "¡Error!" );
+            if ( data == None ): return messagebox.showerror( message = "¡Ingrese un entero válido!", title = "¡Error!" );
             cola.insertar( data );
             queue_txt.config( state = "normal" );
             queue_txt.insert( END, f"{ data }\n" );
@@ -54,7 +54,7 @@ class Program:
 
         # Remover un dato.
         def remover():
-            if ( cola.vacio() ): return messagebox.showinfo( message = "¡Cola Vacía!", title = "¡Error!" );
+            if ( cola.vacio() ): return messagebox.showerror( message = "¡Cola vacía!", title = "¡Error!" );
             cola.remover();
             queue_txt.config( state = "normal" );
             queue_txt.delete( "1.0", "2.0" );

@@ -44,7 +44,7 @@ class Program:
                 if ( re.search( r"[\d\w.,]", char ) ):
 
                     # Buscamos repeticiones en puntos y comas.
-                    if ( len( re.findall( r"[.,]", operand ) ) > 1 ): return messagebox.showinfo( message = "¡Expresión Inválida!", title = "Error" );
+                    if ( len( re.findall( r"[.,]", operand ) ) > 1 ): return messagebox.showerror( message = "¡Expresión inválida!", title = "¡Error!" );
                     operand += char;
 
                 # Si es un operador.
@@ -99,7 +99,7 @@ class Program:
                 if ( re.search( r"[\d\w.,]", char ) ):
 
                     # Buscamos repeticiones en puntos y comas.
-                    if ( len( re.findall( r"[.,]", operand ) ) > 1 ): return messagebox.showinfo( message = "¡Expresión Inválida!", title = "Error" );
+                    if ( len( re.findall( r"[.,]", operand ) ) > 1 ): return messagebox.showerror( message = "¡Expresión inválida!", title = "¡Error!" );
                     operand += char;
 
                 # Si es un operador.
@@ -140,7 +140,7 @@ class Program:
             if ( len( re.findall( r"\(", expression ) ) != len( re.findall( r"\)", expression ) ) ): incomplete = True;
             if ( len( re.findall( r"\[", expression ) ) != len( re.findall( r"\]", expression ) ) ): incomplete = True;
             if ( len( re.findall( r"\{", expression ) ) != len( re.findall( r"\}", expression ) ) ): incomplete = True;
-            if ( invalid or incomplete ): return messagebox.showinfo( message = "¡Expresión Inválida!", title = "Error" );
+            if ( invalid or incomplete ): return messagebox.showerror( message = "¡Expresión inválida!", title = "¡Error!" );
 
             # Expresión convertida a postfijo
             postfix_txt.config( state = "normal" );

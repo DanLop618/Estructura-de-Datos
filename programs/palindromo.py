@@ -51,7 +51,7 @@ class Program:
         # Obtención del texto.
         def getText():
             expression = input_txt.get("1.0", "end-1c" ).strip();
-            if ( not expression ): return messagebox.showinfo( message = "¡Ingresa una expresión válida!", title = "Error" );
+            if ( not expression ): return messagebox.showerror( message = "¡Ingresa una expresión válida!", title = "¡Error!" );
             message = "¡La expresión es palíndroma!";
             if ( not validate( expression ) ): message = "¡La expresión NO es palíndroma!";
             messagebox.showinfo( message = message, title = "Validación" );

@@ -33,7 +33,7 @@ class Program():
         # Obtenemos el texto
         def getText():
             num = safeCast( number_txt.get( "1.0", "end-1c" ).strip(), int );
-            if ( num == None ): return messagebox.showinfo( message = "¡Expresión Inválida!", title = "Error" );
+            if ( not num ): return messagebox.showerror( message = "¡Ingrese un entero válido!", title = "¡Error!" );
             result_txt.config( state = "normal" );
             result_txt.delete( "1.0", END );
             collatz( num );
