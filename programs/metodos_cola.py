@@ -5,6 +5,7 @@ import sys;
 
 # Estructuras
 sys.path.append( path.abspath( "../" ) );
+from structures.Tooltip import Tooltip;
 import util.Constants as Constants;
 from structures.Cola import Cola;
 
@@ -86,7 +87,7 @@ class Program:
             if ( not filtro ): return messagebox.showerror( message = "¡Expresión lambda inválida!", title = "¡Error!" );
             try:
                 filtered = cola.filtrar( lambda el: eval( filtro ) );
-                messagebox.showinfo( message = f"La pila resultante es la siguiente:\n\n{ filtered.imprimir() }\nOcurrencias: { filtered.longitud() }", title = "¡Filtrado!" );
+                messagebox.showinfo( message = f"La cola resultante es la siguiente:\n\n{ filtered.imprimir() }\nOcurrencias: { filtered.longitud() }", title = "¡Filtrado!" );
             except ( NameError, SyntaxError ):
                 messagebox.showerror( message = "¡Expresión lambda inválida!", title = "¡Error!" );
 
@@ -103,8 +104,15 @@ class Program:
         Button( frame, text = "Insertar", command = insertar, width = 9 ).place( x = 25, y = 75 );
         Button( frame, text = "Remover", command = remover, width  = 9 ).place( x = 115, y = 75 );
         Button( frame, text = "Búsqueda", command = buscar, width = 9 ).place( x = 25, y = 175 );
-        Button( frame, text = "Filtrar", command = filtrar, width  = 9 ).place( x = 115, y = 175 );
         Button( frame, text = "Vaciar", command = limpiar, width = 9 ).place( x = 25, y = 275 );
+        filter_btn = Button( frame, text = "Filtrar", command = filtrar, width  = 9 );
+        filter_btn.place( x = 115, y = 175 );
+
+        # Tooltips
+        Tooltip( filter_btn,
+            "Convierte la expresión recibida en una función LAMBDA e itera todos los elementos de la cola, filtrando " +
+            "los elementos que no cumplan con la condición de la función.\n\nEjemplo:\n\n\tint( el ) > 0\n\nDevuelve " +
+            "la cola resultante de todos los elementos convertidos a enteros que sean mayores a 0." );
 
 # Si el programa se ejecuta de manera individual.
 if __name__ == '__main__':
