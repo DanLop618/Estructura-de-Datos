@@ -3,9 +3,10 @@
 @param value: El dato a castear
 @type type: datatype
 @param type: El tipo de dato a realizar el casteo
+@rtype: * | None
 @returns: El dato casteado o un valor nulo en caso de no poderse realizar.
 """
-def safeCast( value, type ):
+def safeCast( value, type: type ):
     try:
         return type( value );
     except ( ValueError, TypeError ):

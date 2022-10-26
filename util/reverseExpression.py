@@ -12,7 +12,7 @@ from structures.Pila import Pila;
 @rtype: string
 @returns: La expresión convertida en reversa
 """
-def reverseExpression( expression ):
+def reverseExpression( expression: str ) -> str:
     pila = Pila();
     reversed = "";
     operand  = "";

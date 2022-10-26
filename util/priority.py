@@ -4,7 +4,7 @@
 @rtype: int
 @returns: El nivel de prioridad del operador recibido
 """
-def priority( operator ):
+def priority( operator: chr ) -> int:
     return {
       '+': 1,
       '-': 1,

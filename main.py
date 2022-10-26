@@ -1,3 +1,11 @@
+"""
+Proyecto realizado para la materia de << Estructura de Datos >> en el
+ciclo escolar 2022-B. Éste menú contiene todos los programas realizados
+en el transcurso del ciclo en cuestión.
+
+Author: Oscar López
+"""
+
 from importlib.machinery import SourceFileLoader;
 from structures.Tooltip import Tooltip;
 from util.safeCast import safeCast;
