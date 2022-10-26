@@ -5,10 +5,10 @@ import sys;
 
 # Estructuras
 sys.path.append( path.abspath( "../" ) );
+from structures.ColaLinear import Cola;
 from structures.Tooltip import Tooltip;
 import util.Constants as Constants;
 from util.safeCast import safeCast;
-from structures.Cola import Cola;
 
 # Programa
 class Program:
