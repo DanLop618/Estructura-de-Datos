@@ -4,14 +4,15 @@ from structures.Nodo import Nodo;
 class Pila:
 
     """Inicializa una nueva Pila de datos.
-    @type datos: array
+    @type datos: tuple
     @param datos: Los datos iniciales de la pila
     @rtype: Pila
     @returns: La pila creada
     """
-    def __init__( self, datos = [] ):
+    def __init__( self, *datos ):
         self.__count = 0;
         self.__tope  = None;
+        print( type( datos ) );
         if ( not datos ): return;
         for dato in datos: self.insertar( dato );
 

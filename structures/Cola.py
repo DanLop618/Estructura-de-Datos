@@ -4,12 +4,12 @@ from structures.Nodo import Nodo;
 class Cola:
 
     """Inicializa una nueva Cola Lineal de datos.
-    @type datos: array
+    @type datos: tuple
     @param datos: Los datos iniciales de la cola
     @rtype: Cola
     @returns: La nueva cola lineal
     """
-    def __init__( self, datos = [] ):
+    def __init__( self, *datos ):
         self.__count  = 0;
         self.__frente = None;
         self.__final  = None;
