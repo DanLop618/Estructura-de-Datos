@@ -5,7 +5,7 @@ class Nodo():
     @type dato: any
     @param dato: El dato que éste nodo almacenará
     @type siguiente: Nodo || None
-    @param siguiente: El nodo registrado anterior al actual, o un valor nulo indicando que éste nodo es el último
+    @param siguiente: El nodo siguiente al que apunta éste nodo
     @rtype: Nodo
     @returns: El nodo creado
     """
