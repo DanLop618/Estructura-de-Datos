@@ -1,5 +1,5 @@
 # Binodo de direcciones de memoria.
-class Nodo():
+class Binodo():
 
     """Inicializa un nuevo Binodo de datos.
     @type dato: any
