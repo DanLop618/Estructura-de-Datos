@@ -12,7 +12,6 @@ class Pila:
     def __init__( self, *datos ):
         self.__count = 0;
         self.__tope  = None;
-        print( type( datos ) );
         if ( not datos ): return;
         for dato in datos: self.insertar( dato );
 
