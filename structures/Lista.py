@@ -21,6 +21,24 @@ class Lista:
         else: self.__insertarMedio( nodo );
         self.__count = self.__count + 1;
 
+    # ELimina un elemento de la lista.
+    def eliminar( self, dato ):
+        actual = None;
+        anterior = None;
+        elemento =None;
+        if ( self.vacio() or not self.contiene( dato ) ): return [ False, None ];
+        if ( self.__frente == self.__final ):
+            elemento = self.__frente._dato;
+            self.__frente = None;
+            self.__final = None;
+        else:
+            actual = self.__encuentraPosicion( dato );
+            elemento = actual._dato;
+            if ( actual == self.__frente ): self.__eliminarFrente();
+            elif ( actual == self.__final ): self.__eliminarFinal();
+            else: self.__eliminarMedio( dato, actual );
+        return [ True, elemento ];
+
     # Insertar un dato al inicio.
     def __insertarPrincipio( self, nodo ):
         nodo._siguiente = self.__frente;
@@ -38,6 +56,30 @@ class Lista:
         nodo._siguiente = posicion._siguiente;
         posicion._siguiente = nodo;
 
+    # Encentra posicion de nodo.
+    def __encuentraPosicion( self, dato ):
+        actual = self.__frente;
+        while ( actual != None and actual._dato != dato ): actual = actual._siguiente;
+        return actual;
+
+    # Eliminanos el nodo del frente.
+    def __eliminarFrente( self ):
+        nodo = self.__frente;
+        self.__frente = self.__frente._siguiente;
+        nodo = None;
+
+    # Eliminanos el nodo del frente.
+    def __eliminarFinal( self ):
+        anterior = self.__posicionAnteriorDato( self.__final._dato );
+        anterior._siguiente = None;
+        self.__final = anterior;
+
+    # ELiminamos un nodo de en medio de la lista.
+    def __eliminarMedio( self, dato, actual ):
+        anterior = self.__posicionAnteriorDato( dato );
+        anterior._siguiente = actual._siguiente;
+        actual._siguiente = None;
+
     # Buscamos el dato anterior al que se quiere ingresar.
     def __posicionAnteriorDato( self, dato ):
         actual = self.__frente;
@@ -46,6 +88,24 @@ class Lista:
             anterior = actual;
             actual = actual._siguiente;
         return anterior;
+
+    # Verifica si existe un dato en la lista.
+    def contiene( self, dato ):
+        for element in self:
+            if ( element == dato ): return True;
+        return False;
+
+    # Encuentra la posición de un elemento.
+    def indice( self, dato ):
+        index = 0;
+        for element in self:
+            if ( element == dato ): return index;
+            index += 1;
+        return -1;
+
+    # Si la lista está vacía.
+    def vacio( self ):
+        return self.__frente == None and self.__final == None;
 
     # Iterador.
     def __iter__( self ):
@@ -66,6 +126,18 @@ class Lista:
 if __name__ == "__main__":
 
     lista = Lista( 2, 1, 7, 9, 3, 4 );
+    index = 1;
+    for element in lista:
+        print( f"Elemento { index }: { element }" );
+        index = index + 1;
+
+    print( f"Contiene << 5 >>: { lista.contiene( 5 ) }" );
+    print( f"Índice de << 4 >>: { lista.indice( 4 ) }" );
+    print( f"Eliminando << 7 >> y << 9 >>" );
+    eliminado, dato = lista.eliminar( 5 );
+    print( f"Eliminando << 5 >>: { eliminado }" );
+    lista.eliminar( 7 );
+    lista.eliminar( 9 );
     index = 1;
     for element in lista:
         print( f"Elemento { index }: { element }" );
