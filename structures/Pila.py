@@ -119,28 +119,3 @@ class Pila:
     def limpiar( self ):
         self.__count = 0;
         self.__tope = None;
-
-    # ------------------------------------------------------------------------------- #
-    #                   Métodos específicos para el proyecto de UNO
-    # ------------------------------------------------------------------------------- #
-
-    """Corta la pila de cartas por la mitad y las junta de manera inversa."""
-    def cortar( self ):
-        aux1 = Pila();
-        aux2 = Pila();
-        total = random.randint( 44, 64 );
-        for i in range( 0, total ): aux1.insertar( self.remover() );
-        while ( not self.vacio() ): aux2.insertar( self.remover() );
-        while ( not aux1.vacio() ): self.insertar( aux1.remover() );
-        while ( not aux2.vacio() ): self.insertar( aux2.remover() );
-
-    """Corta la pila de cartas por la mitad y las junta alternando una carta de cada sub-pila resultante."""
-    def mezclar( self ):
-        aux1 = Pila();
-        aux2 = Pila();
-        total = random.randint( 44, 64 );
-        for i in range( 0, total ): aux1.insertar( self.remover() );
-        while ( not self.vacio() ): aux2.insertar( self.remover() );
-        while ( not aux1.vacio() or not aux2.vacio() ):
-            if ( not aux1.vacio() ): self.insertar( aux1.remover() );
-            if ( not aux2.vacio() ): self.insertar( aux2.remover() );
