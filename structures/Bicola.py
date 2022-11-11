@@ -20,26 +20,45 @@ class Bicola:
     @type elemento: any
     @param elemento: El elemento a ingresar
     """
-    def insertar( self, elemento, principio = False ):
+    def insertarFrente( self, elemento ):
         nodo = Binodo( elemento );
         self.__count += 1;
         if ( self.vacio() ):
             self.__frente = nodo;
             self.__final  = nodo;
-        elif ( principio ):
+            self.__frente._siguiente = self.__final;
+            self.__final._anterior = self.__frente;
+        else:
             nodo._siguiente = self.__frente;
+            nodo._anterior = self.__final;
             self.__frente._anterior = nodo;
+            self.__final._siguiente = nodo;
             self.__frente = nodo;
+
+    """Inserta un nuevo elemento a la bicola.
+    @type elemento: any
+    @param elemento: El elemento a ingresar
+    """
+    def insertarFinal( self, elemento ):
+        nodo = Binodo( elemento );
+        self.__count += 1;
+        if ( self.vacio() ):
+            self.__frente = nodo;
+            self.__final  = nodo;
+            self.__frente._siguiente = self.__final;
+            self.__final._anterior = self.__frente;
         else:
             self.__final._siguiente = nodo;
             nodo._anterior = self.__final;
+            nodo._siguiente = self.__frente;
+            self.__frente._anterior = nodo;
             self.__final = nodo;
 
     """Remueve el elemento frente de la bicola y lo devuelve para su manipulación.
     @rtype: any
     @returns: El elemento frente de la bicola
     """
-    def avanzar( self ):
+    def removerFrente( self ):
         if ( self.vacio() ): raise Exception( "ErrorBicola: No se pueden remover elementos: Bicola vacía." );
         self.__count -= 1;
         frente = self.__frente._dato;
@@ -48,14 +67,14 @@ class Bicola:
             self.__final = None;
         else:
             self.__frente = self.__frente._siguiente;
-            self.__frente._anterior = None;
+            self.__frente._anterior = self.__final;
         return frente;
 
     """Remueve el elemento final de la bicola y lo devuelve para su manipulación.
     @rtype: any
     @returns: El elemento final de la bicola
     """
-    def retroceder( self ):
+    def removerFinal( self ):
         if ( self.vacio() ): raise Exception( "ErrorBicola: No se pueden remover elementos: Bicola vacía." );
         self.__count -= 1;
         final = self.__final._dato;
@@ -64,8 +83,22 @@ class Bicola:
             self.__final = None;
         else:
             self.__final = self.__final._anterior;
-            self.__final._siguiente = None;
+            self.__final._siguiente = self.__frente;
         return final;
+
+    """Avanzamos en un nodo en la bicola."""
+    def avanzar( self ):
+        if ( self.vacio() ): raise Exception( "ErrorBicola: No se puede avanzar: Bicola vacía." );
+        self.insertarFinal( self.removerFrente() );
+        # self.__frente = self.__frente._siguiente;
+        # self.__final = self.__final._siguiente;
+
+    """Retrocedemos un nodo en la bicola."""
+    def retroceder( self ):
+        if ( self.vacio() ): raise Exception( "ErrorBicola: No se puede avanzar: Bicola vacía." );
+        self.insertarFrente( self.removerFinal() );
+        # self.__frente = self.__frente._anterior;
+        # self.__final = self.__final._anterior;
 
     """Verifica si la bicola contiene un elemento.
     @type elemento: any
