@@ -1,3 +1,5 @@
+from managers.ImageLoader import ImageLoader;
+from managers.SoundLoader import SoundLoader;
 from structures.Bicola import Bicola;
 from structures.Pila import Pila;
 from PIL import ImageTk as itk;
@@ -15,25 +17,25 @@ class Game:
 
     # Variables internas del juego.
     jugadores = Bicola();
-    usadas = Pila();
-    bubbles = None;
-    mazo = Pila();
-    reversed = False;
+    usadas    = Pila();
+    bubbles   = None;
+    mazo      = Pila();
+    reversed  = False;
 
     # Inicialización del juego.
     def __init__( self, frame ):
 
-        # Burbujas
-        self.bubbles = Bubbles( frame, self );
-        self.bubbles.spawn( 12 );
-
         # Ventana del juego
-        self.mixer = mixer;
         self.frame = frame;
-        self.imagenes = {};
-        self.sounds = {};
-        self.cargarImagenes();
-        self.cargarSonidos();
+        self.frame.protocol( "WM_DELETE_WINDOW", self.stop );
+
+        # Assets del juego.
+        self.imagenes = ImageLoader();
+        self.sounds   = SoundLoader();
+
+        # Burbujas
+        self.bubbles = Bubbles( self.frame, self );
+        self.bubbles.spawn( 12 );
 
         # Revolver las cartas.
         aux1 = Pila();
@@ -67,43 +69,18 @@ class Game:
         while ( self.usadas.tope().color == None or self.usadas.tope().valor > 9 ): self.usadas.insertar( self.mazo.remover() );
 
         # Labels
-        self.deck_lbl = tk.Label( frame, image = self.imagenes[ "reverse" ] );
+        self.deck_lbl = tk.Label( frame, image = self.imagenes.get( "reverse" ) );
         self.deck_lbl.place( x = 345, rely = 0.35 );
         self.old_lbl = tk.Label( frame );
         self.old_lbl.place( x = 435, rely = 0.35 );
-
-    # Carga de imágenes.
-    def cargarImagenes( self ):
-        for i in range( 0, 4 ):
-            for j in range( 0, 13 ):
-                image = Image.open( f"assets\\{ i }_{ j }.png" );
-                image = image.resize( ( 70, 105 ) );
-                self.imagenes[ f"{ i }_{ j }" ] = itk.PhotoImage( image );
-        self.imagenes[ "13" ] = itk.PhotoImage( Image.open( "assets\\13.png" ).resize( ( 70, 105 ) ) );
-        self.imagenes[ "14" ] = itk.PhotoImage( Image.open( "assets\\14.png" ).resize( ( 70, 105 ) ) );
-        self.imagenes[ "reverse" ] = itk.PhotoImage( Image.open( "assets\\reverse.png" ).resize( ( 70, 105 ) ) );
-        self.imagenes[ "reverse-small" ] = itk.PhotoImage( Image.open( "assets\\reverse.png" ).resize( ( 20, 30 ) ) );
-        self.imagenes[ "IA" ] = itk.PhotoImage( Image.open( "assets\\IA.png" ).resize( ( 35, 35 ) ) );
-        self.imagenes[ "clock" ] = itk.PhotoImage( Image.open( "assets\\clock.png" ).resize( ( 50, 50 ) ) );
-        self.imagenes[ "clock-small" ] = itk.PhotoImage( Image.open( "assets\\clock.png" ).resize( ( 25, 25 ) ) );
-
-    # Sonidos del juego
-    def cargarSonidos( self ):
-        self.mixer.init();
-        self.mixer.music.load( "assets\\sounds\\background.mp3" );
-        self.sounds[ "turn" ] = self.mixer.Sound( "assets\\sounds\\turn.wav" );
-        self.sounds[ "grab" ] = self.mixer.Sound( "assets\\sounds\\grab.wav" );
-        self.sounds[ "release" ] = self.mixer.Sound( "assets\\sounds\\release.wav" );
-        self.sounds[ "reverse" ] = self.mixer.Sound( "assets\\sounds\\reverse.mp3" );
-        self.sounds[ "skip" ] = self.mixer.Sound( "assets\\sounds\\skip.wav" );
 
     # Actualizar la GUI
     def actualizarGUI( self ):
         tope = self.usadas.tope();
         color = tope.color;
         valor = tope.valor;
-        if ( valor < 13 ): self.old_lbl[ "image" ] = self.imagenes[ f"{ color }_{ valor }" ];
-        else: self.old_lbl[ "image" ] = self.imagenes[ f"{ valor }" ];
+        if ( valor < 13 ): self.old_lbl[ "image" ] = self.imagenes.get( f"{ color }_{ valor }" );
+        else: self.old_lbl[ "image" ] = self.imagenes.get( f"{ valor }" );
         colors = [ "#e6564c", "#6ea662", "#faf575", "#4287f5" ];
         if ( color != None ): self.frame[ "bg" ] = colors[ color ];
         for widget in self.frame.winfo_children(): widget.config( bg = self.frame[ "bg" ] );
@@ -135,12 +112,12 @@ class Game:
 
     # Cuando una carta se quema.
     def cartaQuemada( self, player, carta ):
-        self.sounds[ "release" ].play();
+        self.sounds.get( "release" ).play();
         if ( carta.cambiaSentido() ): self.cambiarSentido();
         self.siguiente();
         if ( carta.sumaCartas() ): self.jugadores.frente().tomar( carta.valor - 10 );
         if ( carta.saltaTurno() ):
-            self.sounds[ "skip" ].play();
+            self.sounds.get( "skip" ).play();
             self.siguiente();
         if ( carta.esComodin() ): return self.elegirColor( player );
         self.actualizarGUI();
@@ -153,7 +130,7 @@ class Game:
 
     # Actualizamos el sentido del juego.
     def cambiarSentido( self ):
-        self.sounds[ "reverse" ].play();
+        self.sounds.get( "reverse" ).play();
         self.reversed = not self.reversed;
 
     # Elegir un color del comodín.
@@ -187,8 +164,14 @@ class Game:
 
     # Comenzar el juego:
     def comenzar( self ):
-        self.mixer.music.set_volume( 0.15 );
-        self.mixer.music.play( -1 );
+        background = self.sounds.get( "background" );
+        background.set_volume( 0.15 );
+        background.play( -1 );
         self.actualizarGUI();
         self.iniciarTurno();
         threading.Thread( target = self.bubbles.iniciar ).start();
+
+    # Detención del juego.
+    def stop( self ):
+        self.sounds.mixer.quit();
+        self.frame.destroy();

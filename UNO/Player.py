@@ -18,13 +18,13 @@ class Player:
 
         # Imagen del reloj.
         image = None;
-        if ( state == Constants.IA ): image = game.imagenes[ "clock-small" ];
-        else: image = game.imagenes[ "clock" ];
+        if ( state == Constants.IA ): image = game.imagenes.get( "clock-small" );
+        else: image = game.imagenes.get( "clock" );
         self.clock = tk.Label( game.frame, image = image );
 
         # Imagen de personaje.
         if ( state == Constants.HUMAN ): return;
-        self.icon = tk.Label( game.frame, image = game.imagenes[ "IA" ] );
+        self.icon = tk.Label( game.frame, image = game.imagenes.get( "IA" ) );
 
     # Asignamos la posición de las cartas.
     def posicion( self, pos ):
@@ -37,13 +37,13 @@ class Player:
     def agregarCarta( self, event, carta ):
         if ( self.state == Constants.HUMAN ):
             if ( event != None and self.game.jugadores.frente() != self ): return;
-            self.game.sounds[ "grab" ].play();
-            if ( carta.color != None ): carta.imagen = self.game.imagenes[ f"{ carta.color }_{ carta.valor }" ];
-            else: carta.imagen = self.game.imagenes[ f"{ carta.valor }" ];
+            self.game.sounds.get( "grab" ).play();
+            if ( carta.color != None ): carta.imagen = self.game.imagenes.get( f"{ carta.color }_{ carta.valor }" );
+            else: carta.imagen = self.game.imagenes.get( f"{ carta.valor }" );
             carta.label = tk.Label( self.game.frame, image = carta.imagen );
             carta.label.bind( "<Button-1>", lambda event: self.soltarCarta( event, carta ) );
         else:
-            carta.imagen = self.game.imagenes[ "reverse-small" ];
+            carta.imagen = self.game.imagenes.get( "reverse-small" );
             carta.label = tk.Label( self.game.frame, image = carta.imagen );
         self.cartas.append( carta );
         self.actualizarGUI();
@@ -86,7 +86,7 @@ class Player:
 
     # Tomar una carta.
     def tomar( self, cantidad = 1 ):
-        self.game.sounds[ "grab" ].play();
+        self.game.sounds.get( "grab" ).play();
         for i in range( 0, cantidad ): self.agregarCarta( None, self.game.mazo.remover() );
 
     # Dejar una carta.
@@ -103,12 +103,13 @@ class Player:
     # Juega automáticamente.
     def jugar( self ):
         if ( self.state == Constants.HUMAN ):
-            self.game.sounds[ "turn" ].play();
+            self.game.sounds.get( "turn" ).play();
             self.clock.place( x = 50, y = 375 );
             return;
         else:
             self.clock.place( x = self.x + 35, y = self.y - 35 );
             def iniciar():
+                if ( self.game.stopped ): return;
                 puede, carta = self.puede();
                 if ( not puede ): self.tomar( 1 );
                 puede, carta = self.puede();
