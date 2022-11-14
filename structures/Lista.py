@@ -13,7 +13,7 @@ class Lista:
     # Insertar un dato.
     def insertar( self, dato ):
         nodo = Nodo( dato, None );
-        if ( self.__count == 0 ):
+        if ( self.vacio() ):
             self.__frente = nodo;
             self.__final  = nodo;
         elif ( dato <= self.__frente._dato ): self.__insertarPrincipio( nodo );
@@ -25,7 +25,7 @@ class Lista:
     def eliminar( self, dato ):
         actual = None;
         anterior = None;
-        elemento =None;
+        elemento = None;
         if ( self.vacio() or not self.contiene( dato ) ): return [ False, None ];
         if ( self.__frente == self.__final ):
             elemento = self.__frente._dato;
@@ -103,6 +103,17 @@ class Lista:
             index += 1;
         return -1;
 
+    # Filtra la lista actual y retorna una nueva lista.
+    def filtrar( self, filtro ):
+        filtered = Lista();
+        for element in self:
+            if ( filtro( element ) ): filtered.insertar( element );
+        return filtered;
+
+    # Longitud de la lista.
+    def longitud( self ):
+        return self.__count;
+
     # Si la lista está vacía.
     def vacio( self ):
         return self.__frente == None and self.__final == None;
@@ -122,23 +133,3 @@ class Lista:
             return self.__actual._dato;
         else:
             raise StopIteration;
-
-if __name__ == "__main__":
-
-    lista = Lista( 2, 1, 7, 9, 3, 4 );
-    index = 1;
-    for element in lista:
-        print( f"Elemento { index }: { element }" );
-        index = index + 1;
-
-    print( f"Contiene << 5 >>: { lista.contiene( 5 ) }" );
-    print( f"Índice de << 4 >>: { lista.indice( 4 ) }" );
-    print( f"Eliminando << 7 >> y << 9 >>" );
-    eliminado, dato = lista.eliminar( 5 );
-    print( f"Eliminando << 5 >>: { eliminado }" );
-    lista.eliminar( 7 );
-    lista.eliminar( 9 );
-    index = 1;
-    for element in lista:
-        print( f"Elemento { index }: { element }" );
-        index = index + 1;
