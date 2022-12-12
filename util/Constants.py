@@ -9,3 +9,10 @@ Module_Colas        = 2;
 Module_Listas       = 3;
 Module_Arboles      = 4;
 Module_Grafos       = 5;
+
+"""
+Constantes de tipo de impresión de Árboles.
+"""
+Prefijo  = 0;
+Postfijo = 1;
+Infijo   = 2;
